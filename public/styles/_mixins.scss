@@ -1,0 +1,44 @@
+// Including some handy mixins
+// I wind up using on lots of projects
+
+// Shorthand flex-layout.
+// sets, display, justify-content, align-items, wrap
+// if default values are set,
+//  explicit declarations are skipped
+@mixin flex-container($direction, $justification, $alignment, $wrap: nowrap) {
+  display: flex;
+  @if $alignment != 'stretch' {
+    align-items: $alignment;
+  }
+  @if $direction != 'row' {
+    flex-direction: $direction;
+  }
+  @if $justification != 'flex-start' {
+    justify-content: $justification;
+  }
+  @if $wrap != 'nowrap' {
+    flex-wrap: $wrap;
+  }
+}
+
+// useful breakpoint system
+// for inlining responsiveness
+// in Scss markup.
+// breakpoint name and pixel values
+// can be changed as needed.
+$breakpoints: (
+  big: '(min-width: 1020px)',
+  medium: '(max-width: 1019px)',
+  small: '(max-width: 768px)',
+  not-small: '(min-width: 769px)',
+  mobile: '(max-width: 520px)'
+);
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+  }
+}
+

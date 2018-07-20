@@ -1,0 +1,15 @@
+body#shot-page
+  .advert.advert--owner Sign in or sign up to sync shots across devices, save your favorite shots forver, and copy text, links and images out of your shots.
+  .advert.advert--non-owner.kill Screenshots made simple. Take, save, and share screenshots without leaving Firefox. &nbsp; <a href="#">Get Firefox now</a>
+  include partials/_shot-page-navbar
+  main.main-content
+    img.main-content__shot(src="images/img.png" width="643" height="auto")
+  include partials/_footer
+  form.app-toggles
+    a(href="/") To I
+    label(for="authenticated")
+      input(type="checkbox" value="authenticated" id="authenticated")
+      | Authenticated
+    label(for="owner")
+      input(type="checkbox" value="owner" id="owner" checked)
+      | Owner

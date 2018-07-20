@@ -1,0 +1,20 @@
+// Controls for various app-state
+.app-toggles {
+  @include flex-container(column, flex-start, stretch);
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  background: $orange-50;
+  box-shadow: 0 4px 16px $grey-90-a10;
+  padding: 20px;
+  user-select: none;
+
+  label {
+    @include flex-container(row, flex-start, center);
+    user-select: none;
+  }
+
+  input {
+    margin-right: 4px;
+  }
+}

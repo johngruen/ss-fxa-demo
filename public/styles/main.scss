@@ -1,0 +1,270 @@
+@import "../lib/normalize";
+@import "../lib/photon-colors";
+
+@import "mixins"; // flexbox util
+@import "base"; // box-sizing
+@import "utils"; // showing, hiding, animating
+@import "app-toggles"; // controls for setting state
+@import "shots"; // for the my shots page
+
+$box: 96px;
+$small-text: 14px;
+
+// page specific stuff
+
+
+#home {
+  .main-content {
+    background: $teal-60;
+    margin: 0;
+  }
+}
+
+body {
+  @include flex-container(column, space-between, stretch);
+  background: $grey-10;
+  min-height: 100vh;
+  color: $grey-80;
+}
+
+.advert {
+  @include flex-container(row, center, center);
+  background: $blue-50;
+  color: $white-100;
+  font-size: 18px;
+  height: $box * .5;
+  position: relative;
+  z-index: 1;
+
+  a {
+    color: $white-100;
+  }
+
+   &.advert--owner::after {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid $blue-50;
+    bottom: -18px;
+    content: '';
+    height: 0;
+    position: absolute;
+    right: 28px;
+    width: 0;
+  }
+}
+
+.navbar {
+  @include flex-container(row, space-between, center);
+  height: $box;
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+
+  .navbar__main-header {
+    flex: 1;
+    padding: 0 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    h1 {
+      margin: -1px 0 2px;
+      line-height: 1em;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  .navbar__shot-meta {
+    @include flex-container(row, flex-start, center);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      font-size: $small-text;
+      margin: 0 16px 0 0;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      &:not(:first-child) {
+        flex-shrink: 0;
+      }
+    }
+
+    a {
+      color: $blue-60;
+    }
+  }
+
+  .navbar__firefox-screenshots {
+    @include flex-container(row, flex-start, center);
+    height: $box;
+    flex-basis: $box;
+    cursor: pointer;
+
+    border-right: 1px solid $grey-90-a10;
+
+    img {
+      height: 36px;
+      width: auto;
+      margin-left: 16px;
+    }
+
+    .navbar__firefox-screenshots {
+      text-decoration: none;
+      color: $grey-80;
+    }
+
+    .navbar__firefox-screenshots-content {
+      margin: 0 16px;
+    }
+
+    h2,
+    h3 {
+      margin: 0;
+    }
+
+    &:hover,
+    &:focus {
+      background: $grey-90-a05;
+    }
+
+    &:active {
+      background: $grey-90-a10;
+    }
+  }
+
+
+  .navbar__myshots,
+  .navbar__button,
+  a.navbar_button,
+  a.navbar__myshots {
+    @include flex-container(column, center, center);
+    flex-basis: $box;
+    flex-shrink: 0;
+    height: $box;
+    border: 0;
+    background: transparent;
+    transition: 100ms;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: $small-text;
+    text-decoration: none;
+    color: $grey-80;
+    outline: none;
+
+    img {
+      height: 24px;
+      margin: 0 0 8px;
+      width: auto;
+    }
+
+    span {
+      text-align: center;
+    }
+
+    &:hover:not(.disable),
+    &:focus:not(.disable) {
+      background: $grey-90-a05;
+    }
+
+    &:active:not(.disable) {
+      background: $grey-90-a10;
+    }
+  }
+}
+
+.main-content {
+  @include flex-container(row, center, center);
+  margin: 36px;
+  flex: 1;
+
+  .main-content__shot-wrapper {
+    @include flex-container(row, center, stretch);
+  }
+
+  .main-content__shot {
+    box-shadow: 0 4px 16px $grey-90-a10;
+  }
+
+  .main-content__shot-data {
+    background: $white-100;
+    box-shadow: 0 4px 16px $grey-90-a10;
+    margin-left: 36px;
+    max-width: 400px;
+    height: 100%;
+  }
+
+  .main-content__annotation {
+    padding: 24px;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0;
+      line-height: 20px;
+    }
+  }
+
+  .main-content__upsell {
+    color: $white-100;
+    background: $blue-50;
+    padding: 24px;
+    h2 {
+      margin: 0;
+    }
+
+    ul {
+      flex: 1;
+    }
+
+    button {
+      @include flex-container(row, center, center);
+      background: transparent;
+      border: 2px solid $white-100;
+      padding: 10px;
+      font-size: 18px;
+      color: $white-100;
+      width: 100%;
+
+      &:hover:not(.disable),
+      &:focus:not(.disable) {
+        background: $grey-90-a05;
+      }
+
+      &:active:not(.disable) {
+        background: $grey-90-a10;
+      }
+    }
+  }
+}
+
+.main-footer {
+  @include flex-container(row, space-between, center);
+  height: $box;
+
+  .main-footer__moz-logo {
+    background: url(../images/moz.svg) no-repeat;
+    height: 30px;
+    margin: 0 0 0 16px;
+    width: 120px;
+  }
+
+  .main-footer__links {
+    @include flex-container(row, flex-start, center);
+    color: $grey-50;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      font-size: $small-text;
+      margin: 0 16px 0 0;
+    }
+  }
+}

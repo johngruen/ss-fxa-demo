@@ -1,0 +1,24 @@
+body#home
+  .advert.advert--owner Sign in or sign up to sync shots across devices, save your favorite shots forver, and copy text, links and images out of your shots.
+  section.navbar
+    .navbar__main-header
+      img(src="images/landing-ss-logo.svg")
+    a.navbar__button.my-shots(href="my-shots")
+      img(src="images/icon-shots.svg")
+      span My Shots
+    button.navbar__button.sign-in
+      img(src="images/icon-settings.svg")
+      span Sign In
+    button.navbar__button.settings.kill
+      img(src="images/icon-settings.svg")
+      span Settings
+  main.main-content
+    h1(style="color: white") HOME PAGE CONTENT TK
+  form.app-toggles
+    a(href="/") To Index
+    label(for="authenticated")
+      input(type="checkbox" value="authenticated" id="authenticated")
+      | Authenticated
+    label(for="owner")
+      input(type="checkbox" value="owner" id="owner" checked)
+      | Owner

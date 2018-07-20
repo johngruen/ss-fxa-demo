@@ -1,0 +1,26 @@
+.shots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 280px;
+  width: 1200px;
+  grid-gap: 36px;
+
+  .shot {
+    background: $white-100;
+    box-shadow: 0 4px 16px $grey-90-a10;
+  }
+
+  .shot__upper {
+    height: 160px;
+    background: $grey-20;
+  }
+
+  .shot__fave {
+    width: 24px;
+    height: 24px;
+    float: right;
+    margin: 20px;
+    background: url(../images/icon-heart.svg);
+    background-size: 24px auto;
+  }
+}
